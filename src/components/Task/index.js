@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useDrag } from 'react-dnd';
 import { toast } from 'react-toastify';
 
 import PropTypes from 'prop-types';
@@ -9,13 +8,6 @@ import { Content } from './styles';
 
 const Task = ({ name, id }) => {
     const { removeTask } = useContext(TaskListContext);
-
-    const [{ isDragging }, dragRef] = useDrag({
-        item: { type: 'CARD' },
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
 
     const remove = () => {
         removeTask(id);
@@ -32,7 +24,7 @@ const Task = ({ name, id }) => {
 
     return (
         <>
-            <Content ref={dragRef}>
+            <Content>
                 <li>
                     <span>{name}</span>
                     <div className="box-actions">

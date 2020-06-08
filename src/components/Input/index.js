@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { MdAdd } from 'react-icons/md';
 
@@ -10,22 +10,15 @@ import { Content } from './styles';
 const validations = yup.object().shape({
     task: yup
         .string()
-        .min(2)
+        .min(2, 'Mínimo de 2 letras')
         .max(24, 'Número máximo de caracter excedido')
         .required('Campo vazio'),
 });
 
 const Input = () => {
-    const { addTask, editTask, editItem } = useContext(TaskListContext);
-
-    const [title, setTitle] = useState('');
-
-    const handleChange = (e) => {
-        setTitle(e.target.value);
-    };
+    const { addTask } = useContext(TaskListContext);
 
     const handleSubmit = ({ task }) => {
-        console.log(task);
         toast.success('😎 Tarefa adicionada!', {
             position: 'top-right',
             autoClose: 5000,
@@ -52,7 +45,7 @@ const Input = () => {
                             <Field
                                 name="task"
                                 type="text"
-                                placeholder="Add text"
+                                placeholder="Adicionar tarefa"
                             />
 
                             <button className="submit" type="submit">

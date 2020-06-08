@@ -6,13 +6,11 @@ export const TaskListContext = createContext();
 
 const TaskListContextProvider = ({ children }) => {
     const [tasks, setTasks] = useState([
-        { task: 'Read the book', id: 1 },
-        { task: 'Wash the car', id: 2 },
-        { task: 'Write some code', id: 3 },
+        { task: 'Primeira task', id: uuidv4() },
     ]);
 
-    const addTask = (title) => {
-        setTasks([...tasks, { task: title, id: uuidv4() }]);
+    const addTask = async (title) => {
+        await setTasks([...tasks, { task: title, id: uuidv4() }]);
     };
 
     const removeTask = (id) => {

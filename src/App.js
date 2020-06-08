@@ -1,6 +1,4 @@
 import React from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Router } from 'react-router-dom';
 import Routes from './router';
 
@@ -13,12 +11,10 @@ function App() {
     return (
         <>
             <Router history={history}>
-                <DndProvider backend={HTML5Backend}>
-                    <TaskListContextProvider>
-                        <GlobalStyle />
-                        <Routes />
-                    </TaskListContextProvider>
-                </DndProvider>
+                <TaskListContextProvider>
+                    <GlobalStyle />
+                    <Routes />
+                </TaskListContextProvider>
             </Router>
         </>
     );

@@ -40,6 +40,19 @@ export const Form = css`
     width: 100%;
 `;
 
+export const Footer = css`
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+
+    a {
+        color: #fff;
+        padding-left: 7px;
+        color: ${colors.primary};
+    }
+`;
+
 export const Add = css`
     background-color: ${colors.primary};
     color: #fff;

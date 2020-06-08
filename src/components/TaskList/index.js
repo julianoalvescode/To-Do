@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { useDrag } from 'react-dnd';
 
 import { Helmet } from 'react-helmet';
+import Image from '../../assets/png/imagem.png';
+
 import { TaskListContext } from '../../context/TaskListContext';
 import { Content } from './styles';
 import Input from '../Input';
@@ -9,13 +10,6 @@ import Task from '../Task';
 
 const TaskList = () => {
     const { tasks } = useContext(TaskListContext);
-
-    const [{ isDragging }, dragRef] = useDrag({
-        item: { type: 'CARD' },
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
 
     return (
         <>
@@ -26,8 +20,11 @@ const TaskList = () => {
                 />
             </Helmet>
             <Content>
+                <div className="list-image">
+                    <img src={Image} alt="Imagem" />
+                </div>
                 <Input />
-                <ul>
+                <ul className="list-tasks">
                     {tasks.map((i) => (
                         <Task key={i.id} name={i.task} id={i.id} />
                     ))}
